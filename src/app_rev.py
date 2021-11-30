@@ -58,14 +58,14 @@ def get_tracks():
         {"Tracks": [t.serialize() for t in Tracks.query.all()]}
     )
 
-@app.route("/api/tracks/<int:track_id>/")
-def get_spec_track(track_id):
-    track = Tracks.query.filter_by(id=track_id).first()
-    if track is None:
-        return failure_resp("Track not found")
-    return success_response(tracks.serialize())
+# @app.route("/api/tracks/<int:track_id>/")
+# def get_spec_track(track_id):
+#     track = Tracks.query.filter_by(id=track_id).first()
+#     if track is None:
+#         return failure_resp("Track not found")
+#     return success_response(tracks.serialize())
 
-@app.route("/api/top_tracks/<int:track_id>/add/", methods=["POST"])
+@app.route("/api/top_tracks/add/", methods=["POST"])
 def add_track(track_id):
     track = Tracks.query.filter_by(id=track_id).first()
     if track is None:
@@ -75,7 +75,6 @@ def add_track(track_id):
     new_track = Track(
         trackname=body.get("track_name"),
         artist=body.get("artist"),
-        track_id = track_id
     )
     db.session.add(new_track)
     db.session.commit()
