@@ -80,7 +80,7 @@ def add_track(track_id):
     )
     db.session.add(new_track)
     db.session.commit()
-    return succ_resp(new_asg.serialize(), 201)
+    return succ_resp(new_track.serialize(), 201)
 
 
 if __name__ == "__main__":
