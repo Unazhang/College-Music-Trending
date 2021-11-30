@@ -54,10 +54,9 @@ def create_user():
 
 @app.route("/api/tracks/")
 def get_tracks():
-    track = Tracks.query.filter_by(id=track_id.first())
-    if track is None:
-        return failure_response("Track does not exist")
-    return success_response(tracks.serialize())
+    return succ_resp(
+        {"Tracks": [t.serialize() for t in Tracks.query.all()]}
+    )
 
 @app.route("/api/tracks/<int:track_id>")
 def get_spec_track(track_id):
