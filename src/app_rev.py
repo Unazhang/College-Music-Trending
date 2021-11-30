@@ -73,7 +73,7 @@ def add_track(track_id):
     body = json.loads(request.data)
 
     new_track = Track(
-        title=body.get("title"),
+        trackname=body.get("track_name"),
         artist=body.get("artist"),
         track_id = track_id
     )
