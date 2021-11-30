@@ -54,7 +54,7 @@ def create_user():
 
 @app.route("/api/tracks/")
 def get_tracks():
-    return succ_resp(
+    return success_response(
         {"Tracks": [t.serialize() for t in Tracks.query.all()]}
     )
 
@@ -69,7 +69,7 @@ def get_spec_track(track_id):
 def add_track(track_id):
     track = Tracks.query.filter_by(id=track_id).first()
     if track is None:
-        return fail_resp("Track not found")
+        return failure_response("Track not found")
     body = json.loads(request.data)
 
     new_track = Track(
@@ -79,7 +79,7 @@ def add_track(track_id):
     )
     db.session.add(new_track)
     db.session.commit()
-    return succ_resp(new_track.serialize(), 201)
+    return success_response(new_track.serialize(), 201)
 
 
 if __name__ == "__main__":
