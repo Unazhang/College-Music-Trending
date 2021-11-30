@@ -63,14 +63,14 @@ def get_tracks():
 def get_spec_track(track_id):
     track = Tracks.query.filter_by(id=track_id).first()
     if track is None:
-        return fail_resp("Track not found",)
-    return success_resp(tracks.serialize())
+        return failure_resp("Track not found")
+    return success_response(tracks.serialize())
 
 @app.route("/api/top_tracks/<int:track_id>", methods=["POST"])
 def add_track(track_id):
     track = Tracks.query.filter_by(id=track_id).first()
     if track is None:
-        return fail_resp("course not found")
+        return fail_resp("Track not found")
     body = json.loads(request.data)
 
     new_track = Track(
