@@ -46,9 +46,18 @@ Response
 
 ```json
 {
-    "id": "id",
-    "trackname": "track_name",
-    "artist": "artist_name"
+    "Tracks":[
+        {
+        "id": "id",
+        "trackname": "track_name",
+        "artist": "artist_name"
+        },
+        {
+        "id": <id iter>,
+        "trackname": "track_name",
+        "artist": "artist_name"
+        }
+     ]
 }
 ```
 
@@ -68,7 +77,8 @@ Response
 ```json
 {
     "Tracks":[
-    ...
+    ...,
+    <New Added Track>
     ]
 }
 ```
