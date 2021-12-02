@@ -38,4 +38,39 @@ Response
 }
 ```
 
+### Get Tracks
+
+GET /api/tracks/
+
+Response
+
+```json
+{
+    "id": "id",
+    "trackname": "track_name",
+    "artist": "artist_name"
+}
+```
+
+### Add Track to Database
+
+Request
+
+```json
+{
+    "trackname": "track_name",
+    "artist": "artist_name"
+}
+```
+
+Response
+
+```json
+{
+    "Tracks":[
+    ...
+    ]
+}
+```
+
 
