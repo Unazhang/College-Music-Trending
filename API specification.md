@@ -91,3 +91,13 @@ Response
 ```
 
 
+### Delete all tracks
+DELETE /api/tracks/
+
+Response
+
+```json
+{
+    "All Rows Deleted for Track Table"
+}
+```
