@@ -67,19 +67,36 @@ def get_tracks():
 
 
 @app.route("/api/top_tracks/add/", methods=["POST"])
-def add_track(track_id):
-    track = Tracks.query.filter_by(id=track_id).first()
-    if track is None:
-        return failure_response("Track not found")
-    body = json.loads(request.data)
+def add_track():
+    # track = Tracks.query.filter_by(id=track_id).first()
+    # if track is None:
+    #     return failure_response("Track not found")
 
-    new_track = Tracks(
-        trackname=body.get("track_name"),
-        artist=body.get("artist"),
-    )
-    db.session.add(new_track)
-    db.session.commit()
-    return success_response(new_track.serialize(), 201)
+    body = json.loads(request.data)
+    trackname = body.get("trackname")
+    artist = body.get("artist")
+
+    if trackname is None:
+        return failure_response("Trackname Needed", 400)
+
+    if artist is None:
+        return failure_response("Artist Needed", 400)
+
+    track = Tracks.query.filter_by(trackname=trackname).first()
+
+    if track is None:
+        new_track = Tracks(
+            trackname=trackname,
+            artist=artist,
+        )
+        db.session.add(new_track)
+        db.session.commit()
+        return success_response(new_track.serialize(), 201)
+    else:
+        track.counter += 1
+        db.session.add(track)
+        db.session.commit()
+        return success_response(track.serialize(), 201)
 
 
 if __name__ == "__main__":
