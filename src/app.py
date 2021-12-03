@@ -105,7 +105,15 @@ def add_track():
     else:
         track.counter += 1
         db.session.commit()
-        return success_response(track.serialize(), 201)
+        return success_response(track.serialize())
+
+
+@app.route("/api/tracks/", methods=["DELETE"])
+def delete_all_tracks():
+    Tracks.query.delete()
+    db.session.commit()
+
+    return success_response("All Rows Deleted for Track Table")
 
 
 # if __name__ == "__main__":
