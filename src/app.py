@@ -41,11 +41,12 @@ def get_user_data(user_id):
 @app.route("/api/users/", methods=["POST"])
 def create_user():
     body = json.loads(request.data)
+    name = body.get("name")
 
-    if body.get("name") is None:
+    if name is None:
         return failure_response("Name not provided.", 400)
 
-    user = Users(name=body.get("name"), apikey=body.get("apikey"))
+    user = Users(name=name, apikey=body.get("apikey"))
 
     db.session.add(user)
     db.session.commit()
@@ -55,7 +56,14 @@ def create_user():
 
 @app.route("/api/tracks/")
 def get_tracks():
-    return success_response({"Tracks": [t.serialize() for t in Tracks.query.all()]})
+    # get first 50 results ordered desc
+    return success_response(
+        {
+            "Tracks": [
+                t.serialize() for t in Tracks.query.order_by(Tracks.counter.desc())[:50]
+            ]
+        }
+    )
 
 
 # @app.route("/api/tracks/<int:track_id>/")
@@ -94,7 +102,6 @@ def add_track():
         return success_response(new_track.serialize(), 201)
     else:
         track.counter += 1
-        db.session.add(track)
         db.session.commit()
         return success_response(track.serialize(), 201)
 

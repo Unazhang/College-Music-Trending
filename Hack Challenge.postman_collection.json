@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "be1e1f26-ec14-4396-bda7-547e32f84057",
+		"name": "Hack Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get user info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/api/users/1/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tracks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/api/tracks/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tracks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add track",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trackname\":\"abcdefu\",\n    \"artist\":\"GAYLE\"\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/api/top_tracks/add/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"top_tracks",
+						"add",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add track2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trackname\":\"Tell Me Something Good\",\n    \"artist\":\"Ewan McVicar\"\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/api/top_tracks/add/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"top_tracks",
+						"add",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add track3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"trackname\":\"Christmas Tree Farm\",\n    \"artist\":\"Taylor Swift\"\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/api/top_tracks/add/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"top_tracks",
+						"add",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Alexa\",\n    \"apikey\":\"abcdefghijk\"\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:5000/api/users/",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
