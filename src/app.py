@@ -1,5 +1,5 @@
 from flask.globals import request
-from db import db, Users
+from db import db, Users, Tracks
 from flask import Flask
 import json
 
@@ -51,6 +51,35 @@ def create_user():
     db.session.commit()
 
     return success_response(user.serialize())
+
+
+@app.route("/api/tracks/")
+def get_tracks():
+    return success_response({"Tracks": [t.serialize() for t in Tracks.query.all()]})
+
+
+# @app.route("/api/tracks/<int:track_id>/")
+# def get_spec_track(track_id):
+#     track = Tracks.query.filter_by(id=track_id).first()
+#     if track is None:
+#         return failure_resp("Track not found")
+#     return success_response(tracks.serialize())
+
+
+@app.route("/api/top_tracks/add/", methods=["POST"])
+def add_track(track_id):
+    track = Tracks.query.filter_by(id=track_id).first()
+    if track is None:
+        return failure_response("Track not found")
+    body = json.loads(request.data)
+
+    new_track = Tracks(
+        trackname=body.get("track_name"),
+        artist=body.get("artist"),
+    )
+    db.session.add(new_track)
+    db.session.commit()
+    return success_response(new_track.serialize(), 201)
 
 
 if __name__ == "__main__":

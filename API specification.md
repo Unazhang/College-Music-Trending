@@ -7,7 +7,7 @@ Response
 ```json
 {
     "id":"id",
-    "name":"username"
+    "name":"username",
     "tracks":[
     ...
     ]
@@ -20,9 +20,12 @@ Response
 
 Request
 
+POST /api/users/
+
 ```json
 {
-    "name":"some user name"
+    "name":"some user name",
+    "apikey":"api key"
 }
 ```
 
@@ -31,7 +34,8 @@ Response
 ```json
 {
     "id":"id",
-    "name":"username"
+    "name":"username",
+    "apikey":"apikey",
     "tracks":[
     ...
     ]
