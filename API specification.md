@@ -74,7 +74,8 @@ Request
 ```json
 {
     "trackname": "track_name",
-    "artist": "artist_name"
+    "artist": "artist_name",
+    "album":"album_name"
 }
 ```
 

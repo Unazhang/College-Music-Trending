@@ -1,4 +1,4 @@
-from sqlalchemy.sql.expression import null
+from sqlalchemy.sql.expression import false, null
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String
 
@@ -36,6 +36,7 @@ class Tracks(db.Model):
     id = Column(Integer, primary_key=True)
     trackname = Column(String, nullable=False)
     artist = Column(String, nullable=False)
+    album = Column(String, nullable=False)
     counter = Column(Integer, nullable=False)
     users = db.relationship(
         "Users", secondary=association_table_track, back_populates="usertracks"
@@ -45,6 +46,7 @@ class Tracks(db.Model):
         self.trackname = kwargs.get("trackname")
         self.artist = kwargs.get("artist")
         self.counter = 1
+        self.album = kwargs.get("album")
 
     def serialize(self):
         return {
@@ -52,4 +54,5 @@ class Tracks(db.Model):
             "trackname": self.trackname,
             "artist": self.artist,
             "counter": self.counter,
+            "album": self.album,
         }

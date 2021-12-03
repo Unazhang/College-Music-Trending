@@ -83,6 +83,7 @@ def add_track():
     body = json.loads(request.data)
     trackname = body.get("trackname")
     artist = body.get("artist")
+    album = body.get("album")
 
     if trackname is None:
         return failure_response("Trackname Needed", 400)
@@ -90,13 +91,13 @@ def add_track():
     if artist is None:
         return failure_response("Artist Needed", 400)
 
+    if album is None:
+        return failure_response("No Album Entered", 400)
+
     track = Tracks.query.filter_by(trackname=trackname).first()
 
     if track is None:
-        new_track = Tracks(
-            trackname=trackname,
-            artist=artist,
-        )
+        new_track = Tracks(trackname=trackname, artist=artist, album=album)
         db.session.add(new_track)
         db.session.commit()
         return success_response(new_track.serialize(), 201)
