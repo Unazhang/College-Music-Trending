@@ -67,6 +67,7 @@ Response
 ```
 
 ### Add Track to Database
+POST /api/top_tracks/add/
 
 Request
 

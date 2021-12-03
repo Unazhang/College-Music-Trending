@@ -16,15 +16,18 @@ class Users(db.Model):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     username = Column(String, nullable=False)
+    apikey = Column(String)
+
     usertracks = db.relationship(
         "Tracks", secondary=association_table_track, back_populates="users"
     )
 
     def __init__(self, **kwargs):
         self.username = kwargs.get("name")
+        self.apikey = kwargs.get("apikey")
 
     def serialize(self):
-        return {"id": self.id, "name": self.username}
+        return {"id": self.id, "name": self.username, "apikey": self.apikey}
 
 
 class Tracks(db.Model):

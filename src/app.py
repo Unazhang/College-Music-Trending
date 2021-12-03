@@ -45,7 +45,7 @@ def create_user():
     if body.get("name") is None:
         return failure_response("Name not provided.", 400)
 
-    user = Users(name=body.get("name"))
+    user = Users(name=body.get("name"), apikey=body.get("apikey"))
 
     db.session.add(user)
     db.session.commit()
