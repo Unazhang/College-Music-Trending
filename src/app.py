@@ -2,6 +2,7 @@ from flask.globals import request
 from db import db, Users, Tracks
 from flask import Flask
 import json
+import os
 
 
 app = Flask(__name__)
@@ -107,5 +108,9 @@ def add_track():
         return success_response(track.serialize(), 201)
 
 
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000, debug=True)
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)

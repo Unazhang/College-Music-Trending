@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  demo:
+    image: pulse:test
+    ports:
+      - "5000:5000"
