@@ -12,4 +12,5 @@ ENV/
 env.bak/
 venv.bak/
 
-.code-workspace
+hackchallenge.code-workspace
+.DS_Store
